@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>mydraft.knit</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 36in 48in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 36in;
+height: 48in;
+text-align: justify;
+font-size: 45px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #008080 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #00808024;
+color: #008080;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #00808020;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 36in;
+height: calc(48in *  (1 - 0.2 - 0.1 - 0.01) );
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(48in *  0.2 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #008080;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #008080;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color:#0b4545;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #008080;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #0b454575 33%,
+      #0b4545 50%,
+      #0b454575 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 36in;
+height: calc(48in * 0.2);
+position: absolute;
+background-color: #0b4545;
+color: #ffffff90;
+font-family: Special Elite;
+background-image: linear-gradient(#0b4545 50%,#008080);
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffff90;
+}
+#main-img-left {
+width: 10%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+#main-img-center {
+width: 10%;
+left: calc(36in * 0.45);
+bottom: 0.5in;
+position: absolute;
+}
+#main-img-right {
+width: 10%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+font-size: 150px;
+font-family: Special Elite;
+text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 1em;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globe {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globetext {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 36in;
+height: 48in;
+padding: 0cm;
+}
+.main_bottom {
+width: 36in;
+height: calc(48in * 0.1);
+margin-top: calc(48in * (1 - 0.1));
+position: absolute;
+background-color: #0b4545;
+background-image: linear-gradient(#008080 10%, #0b4545);
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+
+<h3 id="author" class="author">
+
+Dylan Padilla &amp;              <img src = "photo.jpg" height = "250px" width = "255px"> <img src = "Mike.png" height = "250px" width = "250px"> <br> Michael Angilletta<sup> </sup><br>
+<a class="twitter" href="https://mobile.twitter.com/Dylan_Padilla94"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@Dylan_Padilla94</a><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:dpadil10@asu.edu" class="email">dpadil10@asu.edu</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+</h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup></sup> School of Life Sciences, Arizona State University
+</p>
+</div>
+
+<style>
+#main-img-left {
+ width: 40%;
+}
+#main-img-center {
+ width: 10.3%;
+}
+#main-img-right {
+ width: 14%;
+}
+
+.main p {
+font-size: $if(main_textsize)$$main_textsize$$else$150px$endif$;
+font-family: $if(main_fontfamily)$$main_fontfamily$$else$Special Elite$endif$;
+text-align: $if(main_textalign)$$main_textalign$$else$center$endif$;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 0;
+}
+
+</style>
+<p><br></p>
+<div id="background" class="section level1">
+<h1><span style="color: #0b4545;">Background</span></h1>
+<div id="the-allocation-of-energy-to-reproduction-depends-on-maternal-size-which-in-turn-depends-on-environmental-factors-experienced-throughout-the-life-of-the-mother" class="section level2">
+<h2>The allocation of energy to reproduction depends on maternal size, which in turn depends on environmental factors experienced throughout the life of the mother</h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="figure1.jpeg" alt="Path models depicting relationships among body temperature and life-history traits derived from optimality models (see text for details). Abbreviation in the path diagrams are as follows: BT, body temperature; CS, clutch size; FS, maternal length; HS, hatchling/neonate length; PP, primary production; PR, annual precipitation" width="100%" />
+<p class="caption">
+Figure 1: Path models depicting relationships among body temperature and life-history traits derived from optimality models (see text for details). Abbreviation in the path diagrams are as follows: BT, body temperature; CS, clutch size; FS, maternal length; HS, hatchling/neonate length; PP, primary production; PR, annual precipitation
+</p>
+</div>
+<p><br></p>
+</div>
+<div id="because-growth-and-body-size-are-affected-by-environmental-conditions-the-covariation-among-abiotic-factors-should-shape-the-evolution-of-life-history-traits" class="section level2">
+<h2>Because growth and body size are affected by environmental conditions, the covariation among abiotic factors should shape the evolution of life-history traits</h2>
+<p><img src = "gekko2.jpeg" height = "300px" width = "350px">                        <img src = "teiidae.jpeg" height = "350px" width = "400px"></p>
+</div>
+</div>
+<div id="methods-and-data-analysis" class="section level1">
+<h1><span style="color: #0b4545;">Methods and Data Analysis</span></h1>
+<p><br></p>
+<div id="we-used-published-estimates-of-life-histories-for-486-species-of-lizards-belonging-to-34-families" class="section level2">
+<h2>We used published estimates of life histories for 486 species of lizards, belonging to 34 families</h2>
+<p><br></p>
+<p><img src="methods_figure.jpeg" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="phylogenetic-path-analysis-is-an-effective-way-to-test-hypotheses-about-multiple-causes-of-evolutionary-patterns" class="section level2">
+<h2>Phylogenetic path analysis is an effective way to test hypotheses about multiple causes of evolutionary patterns</h2>
+</div>
+<div id="phylopath-of-v.-4.1.1" class="section level2">
+<h2><a href="https://cran.r-project.org/web/packages/phylopath/index.html"><code>phylopath</code> 📦</a> of <svg viewBox="0 0 581 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> v. 4.1.1</h2>
+<p><br></p>
+</div>
+</div>
+<div id="results-and-discussion" class="section level1">
+<h1><span style="color: #0b4545;">Results and Discussion</span></h1>
+<div id="we-discovered-that-precipitation-rather-than-temperature-has-shaped-the-evolution-of-the-life-history" class="section level2">
+<h2>We discovered that precipitation, rather than temperature, has shaped the evolution of the life history</h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figure2.jpeg" alt="Best-fit models of the evolution of reproductive traits considering body temperature (a) and environmental temperature (b) as independent variables. Thicker arrows indicate stronger effects. Values in parentheses denote the standard errors of the path coefficients" width="100%" />
+<p class="caption">
+Figure 2: Best-fit models of the evolution of reproductive traits considering body temperature (a) and environmental temperature (b) as independent variables. Thicker arrows indicate stronger effects. Values in parentheses denote the standard errors of the path coefficients
+</p>
+</div>
+<p><br></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="figure4.jpeg" alt="Relative importance of the causal models describing the evolution of reproductive traits in lizards" width="100%" />
+<p class="caption">
+Figure 3: Relative importance of the causal models describing the evolution of reproductive traits in lizards
+</p>
+</div>
+<p><br></p>
+</div>
+<div id="the-absence-of-a-thermal-effect-on-the-evolution-of-reproductive-tactics-might-partially-be-explained-by-thermoregulation-and-local-adaptation" class="section level2">
+<h2>The absence of a thermal effect on the evolution of reproductive tactics might partially be explained by thermoregulation and local adaptation</h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="figure3.jpeg" alt="Evolution of the reproductive output among 669 species of lizards. The dataset used to perform path analyses was reduced to 486 species because we could not extract data of climatic variables for all species present in the phylogeny" width="100%" />
+<p class="caption">
+Figure 4: Evolution of the reproductive output among 669 species of lizards. The dataset used to perform path analyses was reduced to 486 species because we could not extract data of climatic variables for all species present in the phylogeny
+</p>
+</div>
+<p><br></p>
+</div>
+<div id="our-study-indicates-that-precipitation-is-the-most-likely-driver-of-the-evolution-of-reproductive-traits-in-lizards" class="section level2">
+<h2>Our study indicates that precipitation is the most likely driver of the evolution of reproductive traits in lizards</h2>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p><img align="left" width="3459" height="920" src="rainfall.jpg"></p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=asu_logo.png>
+<img id="main-img-center" src=qr-code-black.png>
+<img id="main-img-right" src=eseb-logo2.png>
+</div>
+</div>
+
+
+
+</body>
+</html>
